@@ -15,6 +15,7 @@ def move_detections(
     detections: Detections,
     offset: np.ndarray,
     resolution_wh: Optional[Tuple[int, int]] = None,
+    image_size: Tuple[int, int],
 ) -> Detections:
     """
     Args:
@@ -39,6 +40,9 @@ def move_detections(
         )
     return detections
 
+    if detections.mask is not None:
+        detections.mask = move_masks(detections.mask, offset, image_size[:2])
+    return detections
 
 class InferenceSlicer:
     """
@@ -152,6 +156,26 @@ class InferenceSlicer:
             )
             return merged
 
+    def _apply_padding_to_slice(self, slice, target_size):
+        """
+        Apply padding to an image slice to ensure it matches the target size.
+
+        Args:
+            slice (np.ndarray): The image slice to be padded.
+            target_size (Tuple[int, int]): The target width and height for the slice.
+
+        Returns:
+            np.ndarray: The padded image slice.
+        """
+        pad_width = (
+            (0, target_size[0] - slice.shape[0]),  
+            (0, target_size[1] - slice.shape[1]),  
+            (0, 0)  
+        )
+        
+        padded_slice = np.pad(slice, pad_width, mode='constant', constant_values=128)
+        return padded_slice
+
     def _run_callback(self, image, offset) -> Detections:
         """
         Run the provided callback on a slice of an image.
@@ -165,6 +189,10 @@ class InferenceSlicer:
             Detections: A collection of detections for the slice.
         """
         image_slice = crop_image(image=image, xyxy=offset)
+
+        if image_slice.shape != (self.slice_wh[1], self.slice_wh[0]):
+            image_slice = self._apply_padding_to_slice(image_slice, self.slice_wh)
+
         detections = self.callback(image_slice)
         resolution_wh = (image.shape[1], image.shape[0])
         detections = move_detections(
