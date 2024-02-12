@@ -41,8 +41,9 @@ def move_detections(
     return detections
 
     if detections.mask is not None:
-        detections.mask = move_masks(detections.mask, offset, image_size[:2])
+        detections.mask = move_masks(detections.mask, offset, resolution_wh[:2])
     return detections
+
 
 class InferenceSlicer:
     """
@@ -168,12 +169,12 @@ class InferenceSlicer:
             np.ndarray: The padded image slice.
         """
         pad_width = (
-            (0, target_size[0] - slice.shape[0]),  
-            (0, target_size[1] - slice.shape[1]),  
-            (0, 0)  
+            (0, target_size[0] - slice.shape[0]),
+            (0, target_size[1] - slice.shape[1]),
+            (0, 0),
         )
-        
-        padded_slice = np.pad(slice, pad_width, mode='constant', constant_values=128)
+
+        padded_slice = np.pad(slice, pad_width, mode="constant", constant_values=128)
         return padded_slice
 
     def _run_callback(self, image, offset) -> Detections:
