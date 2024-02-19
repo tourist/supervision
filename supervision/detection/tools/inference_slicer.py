@@ -141,7 +141,11 @@ class InferenceSlicer:
                 executor.submit(self._run_callback, image, offset) for offset in offsets
             ]
             for future in as_completed(futures):
-                detections_list.append(future.result())
+                detections_list.append(future.result().with_nms(
+                    threshold=self.iou_threshold
+                ))
+
+        return Detections.merge(detections_list=detections_list)
 
         merged = Detections.merge(detections_list=detections_list)
         if self.overlap_filter_strategy == OverlapFilter.NONE:
