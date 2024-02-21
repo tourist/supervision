@@ -21,7 +21,7 @@ class BoundingBoxAnnotator(BaseAnnotator):
 
     def __init__(
         self,
-        color: Union[Color, ColorPalette] = ColorPalette.DEFAULT,
+        color: Union[Color, ColorPalette] = ColorPalette.default(),
         thickness: int = 2,
         color_lookup: ColorLookup = ColorLookup.CLASS,
     ):
@@ -50,7 +50,7 @@ class BoundingBoxAnnotator(BaseAnnotator):
             scene (np.ndarray): The image where bounding boxes will be drawn.
             detections (Detections): Object detections to annotate.
             custom_color_lookup (Optional[np.ndarray]): Custom color lookup array.
-                Allows to override the default color mapping strategy.
+                Allows to override the default() color mapping strategy.
 
         Returns:
             The annotated image.
@@ -103,7 +103,7 @@ class MaskAnnotator(BaseAnnotator):
 
     def __init__(
         self,
-        color: Union[Color, ColorPalette] = ColorPalette.DEFAULT,
+        color: Union[Color, ColorPalette] = ColorPalette.default(),
         opacity: float = 0.5,
         color_lookup: ColorLookup = ColorLookup.CLASS,
     ):
@@ -132,7 +132,7 @@ class MaskAnnotator(BaseAnnotator):
             scene (np.ndarray): The image where masks will be drawn.
             detections (Detections): Object detections to annotate.
             custom_color_lookup (Optional[np.ndarray]): Custom color lookup array.
-                Allows to override the default color mapping strategy.
+                Allows to override the default() color mapping strategy.
 
         Returns:
             The annotated image.
@@ -186,7 +186,7 @@ class PolygonAnnotator(BaseAnnotator):
 
     def __init__(
         self,
-        color: Union[Color, ColorPalette] = ColorPalette.DEFAULT,
+        color: Union[Color, ColorPalette] = ColorPalette.default(),
         thickness: int = 2,
         color_lookup: ColorLookup = ColorLookup.CLASS,
     ):
@@ -215,7 +215,7 @@ class PolygonAnnotator(BaseAnnotator):
             scene (np.ndarray): The image where polygons will be drawn.
             detections (Detections): Object detections to annotate.
             custom_color_lookup (Optional[np.ndarray]): Custom color lookup array.
-                Allows to override the default color mapping strategy.
+                Allows to override the default() color mapping strategy.
 
         Returns:
             The annotated image.
@@ -268,7 +268,7 @@ class ColorAnnotator(BaseAnnotator):
 
     def __init__(
         self,
-        color: Union[Color, ColorPalette] = ColorPalette.DEFAULT,
+        color: Union[Color, ColorPalette] = ColorPalette.default(),
         opacity: float = 0.5,
         color_lookup: ColorLookup = ColorLookup.CLASS,
     ):
@@ -297,7 +297,7 @@ class ColorAnnotator(BaseAnnotator):
             scene (np.ndarray): The image where bounding boxes will be drawn.
             detections (Detections): Object detections to annotate.
             custom_color_lookup (Optional[np.ndarray]): Custom color lookup array.
-                Allows to override the default color mapping strategy.
+                Allows to override the default() color mapping strategy.
 
         Returns:
             The annotated image.
@@ -354,7 +354,7 @@ class HaloAnnotator(BaseAnnotator):
 
     def __init__(
         self,
-        color: Union[Color, ColorPalette] = ColorPalette.DEFAULT,
+        color: Union[Color, ColorPalette] = ColorPalette.default(),
         opacity: float = 0.8,
         kernel_size: int = 40,
         color_lookup: ColorLookup = ColorLookup.CLASS,
@@ -387,7 +387,7 @@ class HaloAnnotator(BaseAnnotator):
             scene (np.ndarray): The image where masks will be drawn.
             detections (Detections): Object detections to annotate.
             custom_color_lookup (Optional[np.ndarray]): Custom color lookup array.
-                Allows to override the default color mapping strategy.
+                Allows to override the default() color mapping strategy.
 
         Returns:
             The annotated image.
@@ -446,7 +446,7 @@ class EllipseAnnotator(BaseAnnotator):
 
     def __init__(
         self,
-        color: Union[Color, ColorPalette] = ColorPalette.DEFAULT,
+        color: Union[Color, ColorPalette] = ColorPalette.default(),
         thickness: int = 2,
         start_angle: int = -45,
         end_angle: int = 235,
@@ -481,7 +481,7 @@ class EllipseAnnotator(BaseAnnotator):
             scene (np.ndarray): The image where ellipses will be drawn.
             detections (Detections): Object detections to annotate.
             custom_color_lookup (Optional[np.ndarray]): Custom color lookup array.
-                Allows to override the default color mapping strategy.
+                Allows to override the default() color mapping strategy.
 
         Returns:
             The annotated image.
@@ -536,7 +536,7 @@ class BoxCornerAnnotator(BaseAnnotator):
 
     def __init__(
         self,
-        color: Union[Color, ColorPalette] = ColorPalette.DEFAULT,
+        color: Union[Color, ColorPalette] = ColorPalette.default(),
         thickness: int = 4,
         corner_length: int = 15,
         color_lookup: ColorLookup = ColorLookup.CLASS,
@@ -568,7 +568,7 @@ class BoxCornerAnnotator(BaseAnnotator):
             scene (np.ndarray): The image where box corners will be drawn.
             detections (Detections): Object detections to annotate.
             custom_color_lookup (Optional[np.ndarray]): Custom color lookup array.
-                Allows to override the default color mapping strategy.
+                Allows to override the default() color mapping strategy.
 
         Returns:
             The annotated image.
@@ -622,7 +622,7 @@ class CircleAnnotator(BaseAnnotator):
 
     def __init__(
         self,
-        color: Union[Color, ColorPalette] = ColorPalette.DEFAULT,
+        color: Union[Color, ColorPalette] = ColorPalette.default(),
         thickness: int = 2,
         color_lookup: ColorLookup = ColorLookup.CLASS,
     ):
@@ -652,7 +652,7 @@ class CircleAnnotator(BaseAnnotator):
             scene (np.ndarray): The image where box corners will be drawn.
             detections (Detections): Object detections to annotate.
             custom_color_lookup (Optional[np.ndarray]): Custom color lookup array.
-                Allows to override the default color mapping strategy.
+                Allows to override the default() color mapping strategy.
 
         Returns:
             The annotated image.
@@ -706,7 +706,7 @@ class DotAnnotator(BaseAnnotator):
 
     def __init__(
         self,
-        color: Union[Color, ColorPalette] = ColorPalette.DEFAULT,
+        color: Union[Color, ColorPalette] = ColorPalette.default(),
         radius: int = 4,
         position: Position = Position.CENTER,
         color_lookup: ColorLookup = ColorLookup.CLASS,
@@ -738,7 +738,7 @@ class DotAnnotator(BaseAnnotator):
             scene (np.ndarray): The image where dots will be drawn.
             detections (Detections): Object detections to annotate.
             custom_color_lookup (Optional[np.ndarray]): Custom color lookup array.
-                Allows to override the default color mapping strategy.
+                Allows to override the default() color mapping strategy.
 
         Returns:
             The annotated image.
@@ -782,7 +782,7 @@ class LabelAnnotator:
 
     def __init__(
         self,
-        color: Union[Color, ColorPalette] = ColorPalette.DEFAULT,
+        color: Union[Color, ColorPalette] = ColorPalette.default(),
         text_color: Color = Color.WHITE,
         text_scale: float = 0.5,
         text_thickness: int = 1,
@@ -866,7 +866,7 @@ class LabelAnnotator:
             detections (Detections): Object detections to annotate.
             labels (List[str]): Optional. Custom labels for each detection.
             custom_color_lookup (Optional[np.ndarray]): Custom color lookup array.
-                Allows to override the default color mapping strategy.
+                Allows to override the default() color mapping strategy.
 
         Returns:
             The annotated image.
@@ -1032,7 +1032,7 @@ class TraceAnnotator:
 
     def __init__(
         self,
-        color: Union[Color, ColorPalette] = ColorPalette.DEFAULT,
+        color: Union[Color, ColorPalette] = ColorPalette.default(),
         position: Position = Position.CENTER,
         trace_length: int = 30,
         thickness: int = 2,
@@ -1043,10 +1043,10 @@ class TraceAnnotator:
             color (Union[Color, ColorPalette]): The color to draw the trace, can be
                 a single color or a color palette.
             position (Position): The position of the trace.
-                Defaults to `CENTER`.
+                default()s to `CENTER`.
             trace_length (int): The maximum length of the trace in terms of historical
-                points. Defaults to `30`.
-            thickness (int): The thickness of the trace lines. Defaults to `2`.
+                points. default()s to `30`.
+            thickness (int): The thickness of the trace lines. default()s to `2`.
             color_lookup (str): Strategy for mapping colors to annotations.
                 Options are `INDEX`, `CLASS`, `TRACK`.
         """
@@ -1069,7 +1069,7 @@ class TraceAnnotator:
             detections (Detections): The detections which include coordinates for
                 which the traces will be drawn.
             custom_color_lookup (Optional[np.ndarray]): Custom color lookup array.
-                Allows to override the default color mapping strategy.
+                Allows to override the default() color mapping strategy.
 
         Returns:
             The annotated image.
@@ -1142,13 +1142,13 @@ class HeatMapAnnotator:
     ):
         """
         Args:
-            position (Position): The position of the heatmap. Defaults to
+            position (Position): The position of the heatmap. default()s to
                 `BOTTOM_CENTER`.
             opacity (float): Opacity of the overlay mask, between 0 and 1.
             radius (int): Radius of the heat circle.
             kernel_size (int): Kernel size for blurring the heatmap.
-            top_hue (int): Hue at the top of the heatmap. Defaults to 0 (red).
-            low_hue (int): Hue at the bottom of the heatmap. Defaults to 125 (blue).
+            top_hue (int): Hue at the top of the heatmap. default()s to 0 (red).
+            low_hue (int): Hue at the bottom of the heatmap. default()s to 125 (blue).
         """
         self.position = position
         self.opacity = opacity
@@ -1292,7 +1292,7 @@ class TriangleAnnotator(BaseAnnotator):
 
     def __init__(
         self,
-        color: Union[Color, ColorPalette] = ColorPalette.DEFAULT,
+        color: Union[Color, ColorPalette] = ColorPalette.default(),
         base: int = 10,
         height: int = 10,
         position: Position = Position.TOP_CENTER,
@@ -1327,7 +1327,7 @@ class TriangleAnnotator(BaseAnnotator):
             scene (np.ndarray): The image where triangles will be drawn.
             detections (Detections): Object detections to annotate.
             custom_color_lookup (Optional[np.ndarray]): Custom color lookup array.
-                Allows to override the default color mapping strategy.
+                Allows to override the default() color mapping strategy.
 
         Returns:
             np.ndarray: The annotated image.
