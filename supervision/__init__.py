@@ -18,7 +18,6 @@ from supervision.annotators.core import (
     HeatMapAnnotator,
     LabelAnnotator,
     MaskAnnotator,
-    PercentageBarAnnotator,
     PixelateAnnotator,
     PolygonAnnotator,
     RoundBoxAnnotator,
