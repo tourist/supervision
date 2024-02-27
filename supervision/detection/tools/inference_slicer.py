@@ -83,6 +83,7 @@ class InferenceSlicer:
         ] = OverlapFilter.NON_MAX_SUPPRESSION,
         iou_threshold: float = 0.5,
         thread_workers: int = 1,
+        nms_mask: Optional[bool] = False,
     ):
         overlap_filter_strategy = validate_overlap_filter(overlap_filter_strategy)
 
@@ -92,6 +93,7 @@ class InferenceSlicer:
         self.overlap_filter_strategy = overlap_filter_strategy
         self.callback = callback
         self.thread_workers = thread_workers
+        self.nms_mask = nms_mask
 
     def __call__(self, image: np.ndarray) -> Detections:
         """
@@ -142,7 +144,7 @@ class InferenceSlicer:
             ]
             for future in as_completed(futures):
                 detections_list.append(
-                    future.result().with_nms(threshold=self.iou_threshold)
+                    future.result().with_nms(threshold=self.iou_threshold, nms_mask=self.nms_mask)
                 )
 
         merged = Detections.merge(detections_list=detections_list)
