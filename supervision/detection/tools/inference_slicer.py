@@ -144,7 +144,9 @@ class InferenceSlicer:
             ]
             for future in as_completed(futures):
                 detections_list.append(
-                    future.result().with_nms(threshold=self.iou_threshold, nms_mask=self.nms_mask)
+                    future.result().with_nms(
+                        threshold=self.iou_threshold, nms_mask=self.nms_mask
+                    )
                 )
 
         merged = Detections.merge(detections_list=detections_list)
