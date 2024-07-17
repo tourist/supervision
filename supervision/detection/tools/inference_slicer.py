@@ -15,7 +15,6 @@ def move_detections(
     detections: Detections,
     offset: np.ndarray,
     resolution_wh: Optional[Tuple[int, int]] = None,
-    image_size: Tuple[int, int],
 ) -> Detections:
     """
     Args:
